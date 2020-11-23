@@ -7,10 +7,8 @@ dotenv.config();
 exports.crawlGetDatas = (async (link,trNum,trData,trDate) => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
+  await page.goto(link);
 
-  await page.goto(link);     
-
-  // tr태그의 개수
   const number = await page.$$eval(trNum, (data) => data.length);
   let data = [],date = [];
 
@@ -19,10 +17,9 @@ exports.crawlGetDatas = (async (link,trNum,trData,trDate) => {
     date.push( await page.$eval(`${trNum}:nth-child(${i}${trDate}`, element => { return element.textContent; }) )
   }
 
-
   console.log(data);
   console.log(date);
 
-
   await browser.close();
 });
+
