@@ -1,7 +1,8 @@
-package com.example.covid19detector
+package com.example.covid19detector.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.covid19detector.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
