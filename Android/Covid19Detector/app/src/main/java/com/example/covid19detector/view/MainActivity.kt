@@ -53,17 +53,9 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        tv_adress.setOnClickListener() {
-            btnClick()
-        }
-        btn_search.setOnClickListener() {
-            btnClick()
-        }
-        fab2.setOnClickListener(){
-            val intent: Intent = Intent(this@MainActivity, ScheduleActivity::class.java)
-            intent.putExtra("Schedule", ScheduleActivity::class.java)
-            startActivity(intent)
-        }
+
+        onClickEvent()
+
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
 
@@ -74,10 +66,34 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         DataUtil.LatLngData.observe(this, Observer {
             Handler().postDelayed({
                 val latlng = LatLng(DataUtil.LatLngData.value!!.lat,DataUtil.LatLngData.value!!.lon)
+                val postBody = PostBody(
+                    DataUtil.LatLngData.value!!.lat.toString(),
+                    DataUtil.LatLngData.value!!.lon.toString()
+                )
+                getPostedResponse(postBody)
                 mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latlng, 17f))
                 mMap.addMarker(MarkerOptions().position(latlng).title("ㅎㅎ"))
             }, 1000)
         })
+    }
+
+    fun onClickEvent(){
+        tv_adress.setOnClickListener() {
+            btnClick()
+        }
+        btn_search.setOnClickListener() {
+            btnClick()
+        }
+        fab1.setOnClickListener {
+            val intent = Intent(this,NowCovid19Activity::class.java)
+            startActivity(intent)
+        }
+        fab2.setOnClickListener {
+            // TODO: 2020-11-25 액티비티 이동
+        }
+        fab3.setOnClickListener {
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 17f))
+        }
     }
 
     fun btnClick() {
@@ -195,6 +211,31 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
             addLocationListener()
         }
     }
+    fun getPostedResponse(postBody : PostBody) : Int{
+        var score = 0
+        val call : Call<PostResponse> = ApiRetrofitClient.instance.GetData.postLatLon(postBody)
+
+        call.enqueue(object : retrofit2.Callback<PostResponse>{
+            override fun onResponse(
+                call: Call<PostResponse>,
+                response: Response<PostResponse>
+            ) {
+                score = response.body()!!.distance
+                Log.d("TAGTAG",score.toString())
+                when(score){
+                    0 -> img_icon.setImageResource(R.drawable.safety)
+                    1 -> img_icon.setImageResource(R.drawable.warning)
+                    2 -> img_icon.setImageResource(R.drawable.danger)
+                    else -> img_icon.setImageResource(R.drawable.safety)
+                }
+            }
+
+            override fun onFailure(call: Call<PostResponse>, t: Throwable) {
+                Log.w("Fail","Retrofit Failed.")
+            }
+        })
+        return score
+    }
 
     inner class MyLocationCallBack : LocationCallback() {
         override fun onLocationResult(p0: LocationResult?) {
@@ -225,24 +266,6 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
                 }
                 Log.d("MapsActivity", "위도: $latitude, 경도 : $longitude")
             }
-        }
-        fun getPostedResponse(postBody : PostBody) : Int{
-            var score = 0
-            val call : Call<PostResponse> = ApiRetrofitClient.instance.GetData.postLatLon(postBody)
-
-            call.enqueue(object : retrofit2.Callback<PostResponse>{
-                override fun onResponse(
-                    call: Call<PostResponse>,
-                    response: Response<PostResponse>
-                ) {
-                    score = response.body()!!.distance
-                }
-
-                override fun onFailure(call: Call<PostResponse>, t: Throwable) {
-                    Log.w("Fail","Retrofit Failed.")
-                }
-            })
-            return score
         }
     }
 }

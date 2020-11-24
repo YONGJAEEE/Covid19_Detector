@@ -48,9 +48,9 @@ exports.location = (async (ctx,next) => {
     count = list.indexOf(Math.min.apply(null, list));
     set = Math.floor(Math.min.apply(null, list) * 10000000);
 
-    if (set>1000) {
+    if (set>5000) {
       distance = 0;
-    }else if(set>500){
+    }else if(set>2000){
       distance = 1;
     }else{
       distance = 2;
