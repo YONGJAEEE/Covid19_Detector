@@ -24,8 +24,12 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
 
-        <activity android:name=".view.SearchActivity" />
-        <activity android:name=".view.NowCovid19Activity" />
+        <activity android:name=".view.SearchActivity" >
+
+        </activity>
+        <activity android:name=".view.NowCovid19Activity" >
+
+        </activity>
         <activity android:name=".view.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
