@@ -10,14 +10,14 @@
         android:id="@+id/tv1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="More Fonts..."
         android:text="코로나 국내 현황"
-        android:fontFamily="@font/bold"
         android:textColor="@color/black"
         android:textSize="24sp"
-        android:layout_marginTop="32dp"
-        android:layout_marginStart="24dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/todayText"
