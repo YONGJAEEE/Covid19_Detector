@@ -39,8 +39,8 @@
             android:layout_width="32dp" />
 
         <TextView
+            android:id="@+id/tv_adress"
             android:text="장소를 입력해주세요."
-            android:onClick="@{()->Activity.btnClick()}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -49,7 +49,6 @@
             app:layout_constraintBottom_toBottomOf="parent"/>
 
         <ImageButton
-            android:onClick="@{()->Activity.btnClick()}"
             android:id="@+id/btn_search"
             android:layout_gravity="center_vertical"
             app:layout_constraintEnd_toEndOf="parent"
