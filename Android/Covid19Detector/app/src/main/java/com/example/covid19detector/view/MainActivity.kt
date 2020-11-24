@@ -8,6 +8,7 @@ import android.content.pm.PackageManager
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.view.ContextThemeWrapper
@@ -48,6 +49,11 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         }
         btn_search.setOnClickListener(){
             btnClick()
+        }
+        fab2.setOnClickListener(){
+            val intent: Intent = Intent(this@MainActivity, ScheduleActivity::class.java)
+            intent.putExtra("Schedule", ScheduleActivity::class.java)
+            startActivity(intent)
         }
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
