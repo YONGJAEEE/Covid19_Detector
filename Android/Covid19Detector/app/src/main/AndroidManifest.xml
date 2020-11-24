@@ -23,16 +23,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".view.MapActivity"></activity>
+        <activity android:name=".view.MapActivity"/>
         <activity android:name=".view.SearchActivity" />
         <activity android:name=".view.NowCovid19Activity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-        <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
 
         <activity android:name=".view.MainActivity">
             <intent-filter>
