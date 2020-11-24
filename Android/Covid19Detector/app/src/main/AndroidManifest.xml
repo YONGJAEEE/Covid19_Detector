@@ -21,11 +21,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".view.NowCovid19Activity">
-
-        </activity>
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".view.MapActivity"></activity>
+        <activity android:name=".view.SearchActivity" />
+        <activity android:name=".view.NowCovid19Activity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -33,7 +33,6 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
 
         <activity android:name=".view.MainActivity">
             <intent-filter>
