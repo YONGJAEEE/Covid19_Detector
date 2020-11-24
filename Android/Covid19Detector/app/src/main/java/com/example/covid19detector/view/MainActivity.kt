@@ -2,6 +2,7 @@ package com.example.covid19detector.view
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
 import android.graphics.Color
@@ -152,6 +153,11 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         //위치 권한을 요청해야 함.
         // 액티비티가 잠깐 쉴 때,
         // 자신의 위치를 확인하고, 갱신된 정보를 요청
+    }
+
+    fun btnClick(){
+        val intent = Intent(this,SearchActivity::class.java)
+        startActivity(intent)
     }
 
     inner class MyLocationCallBack : LocationCallback() {
