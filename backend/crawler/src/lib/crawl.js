@@ -23,3 +23,9 @@ exports.crawlGetDatas = (async (link,trNum,trData,trDate) => {
   await browser.close();
 });
 
+exports.crawledDatasNormalize = (async (data,date) => {
+
+  console.log(data);
+  console.log(date);
+
+});
