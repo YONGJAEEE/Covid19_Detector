@@ -36,6 +36,10 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
     var locationCallback: MainActivity.MyLocationCallBack? = null // 내부 클래스, 위치 변경 후 지도에 표시.
     val polyLineOptions = PolylineOptions().width(5f).color(Color.RED)
     val REQUEST_ACCESS_FINE_LOCATION = 1000
+
+    var currentLatLng = LatLng(0.1,0.1)
+    var tempLatLng = LatLng(0.1,0.1)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -127,13 +131,13 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         locationRequest = LocationRequest() // 위치 요청.
 
         locationRequest!!.priority = LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY
-        locationRequest!!.interval = 10000 // 내 위치 지도 전달 간격
+
+        locationRequest!!.interval = 5000 // 내 위치 지도 전달 간격
         locationRequest!!.fastestInterval = 5000 // 지도 갱신 간격.
 
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
-        // 지도가 준비되었다면 호출.
         mMap = googleMap
 
         val sydney = LatLng(-34.0, 151.0) // 위도 경도, 변수에 저장.
@@ -153,7 +157,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
 
     fun removeLocationLister(){
         fusedLocationProviderClient!!.removeLocationUpdates(locationCallback)
-        // 어플이 종료되면 지도 요청 해제.
+
     }
 
     @SuppressLint("MissingPermission")
@@ -167,15 +171,23 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
             val location = p0?.lastLocation
 
             location?.run {
-                val latLng = LatLng(latitude, longitude) // 위도 경도 좌표 전달.
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 17f))
+                val nowLatLng = LatLng(latitude,longitude)
 
+                if (tempLatLng == LatLng(0.1,0.1)){
+                    currentLatLng = nowLatLng
+                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 17f))
+                    polyLineOptions.add(currentLatLng)
+                    mMap.addPolyline(polyLineOptions)
+                    mMap.addMarker(MarkerOptions().position(currentLatLng).title("ㅎㅎ"))
+                }
+
+                if (nowLatLng != tempLatLng){
+                    //서버로 좌표 전송
+                    // TODO: 2020-11-24  레트로핏으로 값 POST
+                    Toast.makeText(this@MainActivity, "!!!!!", Toast.LENGTH_SHORT).show()
+                    tempLatLng = nowLatLng
+                }
                 Log.d("MapsActivity", "위도: $latitude, 경도 : $longitude")
-
-                polyLineOptions.add(latLng) // polyline 기준을 latLng으로 설정
-
-                mMap.addPolyline(polyLineOptions) // googleMap에 ployLine을 그림.
-                mMap.addMarker(MarkerOptions().position(latLng).title("ㅎㅎ"))
             }
         }
     }
