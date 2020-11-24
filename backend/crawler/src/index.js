@@ -15,9 +15,12 @@ const connection = mariadb.createPool({
   database: process.env.database
 });
 
-
+/*
 schedule.scheduleJob ('00 * * * * *', async () =>{
   let data, date, sql, rows;
+
+  sql = `DELETE FROM dataSheet WHERE x != 'null';`;
+  await connection.query(sql,() =>{connection.release();});
 
   const insertD = (async () => {  
   sql = `SELECT * FROM setting;`;
@@ -29,7 +32,7 @@ schedule.scheduleJob ('00 * * * * *', async () =>{
       console.log(data,date);
 
       await data.map(async (dataElement, index) => {
-        sql = `INSERT INTO dataSheet(city,location,date,x,y) VALUES('${element['name']}','${dataElement}','${date[index]}','null','null');`
+        sql = `INSERT INTO dataSheet(city,location,date,x,y) VALUES('${element['name']}','${dataElement}','${date[index].replace(' ','').split('.(')[0]}','null','null');`
         await connection.query(sql,() =>{connection.release();});
       });
     });
@@ -38,7 +41,7 @@ schedule.scheduleJob ('00 * * * * *', async () =>{
   await insertD();
 });
 
-schedule.scheduleJob ('15 * * * * *', async () =>{
+schedule.scheduleJob ('17 * * * * *', async () =>{
   let data, date, sql, rows;
 
   const deleteD = (async () => {  
@@ -66,4 +69,9 @@ schedule.scheduleJob ('20 * * * * *', async () =>{
   });
 
   await updateD();
+});
+*/
+
+schedule.scheduleJob ('00 * * * * *', async () =>{
+  crawl.crawlGetEvery();
 });
