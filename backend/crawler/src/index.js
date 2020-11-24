@@ -3,7 +3,7 @@ import schedule from 'node-schedule';
 import dotenv from 'dotenv';
 dotenv.config();
 
-//import db from './db';
+import db from './db';
 import crawl from './lib/crawl';
 
 

@@ -1,8 +1,10 @@
-import user from "./user";
+import dataSheet from "./dataSheet";
+import setting from "./setting";
 
 
 module.exports = (Sequelize, sequelize) => {
   return {
-    user: user(Sequelize, sequelize)
+    dataSheet: dataSheet(Sequelize, sequelize),
+    setting: setting(Sequelize, sequelize)
   };
 };
