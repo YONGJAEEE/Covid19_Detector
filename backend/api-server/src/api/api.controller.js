@@ -16,17 +16,15 @@ exports.status = (async (ctx,next) => {
   sql = `SELECT * FROM sickPeople WHERE num = (SELECT MAX(num) FROM sickPeople);`;
   rows = await connection.query(sql,() =>{connection.release();});
 
-  console.log(rows[0]);
-
   body = {
     "patient" : rows[0]['gotCha'].split(':')[0],
     "release" : rows[0]['runAway'].split(':')[0],
     "care" : rows[0]['cure'].split(':')[0],
     "dead" : rows[0]['dead'].split(':')[0],
-    "add patient" : rows[0]['gotCha'].split(':')[1],
-    "add release" : rows[0]['runAway'].split(':')[1],
-    "add care" : rows[0]['cure'].split(':')[1],
-    "add dead" : rows[0]['dead'].split(':')[1],
+    "add_patient" : rows[0]['gotCha'].split(':')[1],
+    "add_release" : rows[0]['runAway'].split(':')[1],
+    "add_care" : rows[0]['cure'].split(':')[1],
+    "add_dead" : rows[0]['dead'].split(':')[1],
   };
 
   ctx.body = body;
@@ -36,25 +34,29 @@ exports.status = (async (ctx,next) => {
 exports.location = (async (ctx,next) => {
   const { locateX } = ctx.request.body;
   const { locateY } = ctx.request.body;
-  let sql,rows,status,body,option = '';
+  let sql,rows,status,body,count,list = [];
 
-  if(category != 0){ option = `WHERE category = ${category}` }
 
-  const thread = async() => {
-    sql = `SELECT num,title,date,\`like\`,dislike FROM thread ${option} ORDER BY \`${sort}\` DESC LIMIT ${start}, 20;`;
+  const location = async() => {
+    sql = `SELECT location,x,y FROM dataSheet;`;
     rows = await connection.query(sql,() =>{connection.release();});
 
-    if(rows[0]){
-      status = 200;
-      body = {"contents" : rows};
-    }else{
-      status = 404;
-      body = {"message" : "api 요청이 잘못됬거나 더 이상 페이지가 없어요!!"};
-    }
+    rows.map(async (element, index) => {
+      list.push(Math.pow(element['x'] - locateX, 2) + Math.pow(element['y'] - locateY, 2))
+    });
+
+    count = list.indexOf(Math.min.apply(null, list));
+
+    status = 200;
+    body = {
+      "locate" : rows[count]['location'],
+      "x" : rows[count]['x'],
+      "y" : rows[count]['y'],
+    };
   };
 
-  await thread();
-  ctx.status = status;
+  await location();
+  ctx.status = 200;
   ctx.body = body;
 });
 
