@@ -4,81 +4,200 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.NowCovid19Activity">
+    tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/tv1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="32dp"
         android:text="코로나 국내 현황"
-        android:fontFamily="@font/bold"
         android:textColor="@color/black"
         android:textSize="24sp"
-        android:layout_marginTop="32dp"
-        android:layout_marginStart="24dp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/todayText"
-        android:fontFamily="@font/bold"
-        android:textColor="@color/black"
-        android:textSize="22sp"
-        android:layout_marginStart="24dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="2020.11.24 월요일"
-        app:layout_constraintTop_toBottomOf="@+id/tv1"
-        app:layout_constraintStart_toStartOf="parent"/>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card1"
-            android:layout_width="160dp"
-            android:layout_height="160dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/todayText"
-            android:layout_margin="30dp"
-            app:cardElevation="15dp"
-            app:cardCornerRadius="5dp">
-
-        </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card2"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
-        app:layout_constraintStart_toEndOf="@+id/card1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/todayText"
-        android:layout_margin="30dp"
-        app:cardElevation="15dp"
-        app:cardCornerRadius="5dp">
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card3"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
-        android:layout_margin="30dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:text="2020.11.24 화요일"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card1"
+        app:layout_constraintTop_toBottomOf="@+id/tv1" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/confirmed_patient"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_margin="30dp"
+        app:cardCornerRadius="5dp"
         app:cardElevation="15dp"
-        app:cardCornerRadius="5dp">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/todayText">
+
+        <TextView
+            android:id="@+id/tv_patient"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:text="확진자"
+            android:textColor="#BF304A"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_patient_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:text="31,004"
+            android:textColor="#BF304A"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/patient_today_increased"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginBottom="10dp"
+            android:text="271↑"
+            android:textColor="#BF304A"
+            android:textStyle="bold" />
 
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/card4"
+        android:id="@+id/under_inspection"
         android:layout_width="160dp"
         android:layout_height="160dp"
         android:layout_margin="30dp"
-        app:layout_constraintStart_toEndOf="@+id/card3"
-        app:layout_constraintTop_toBottomOf="@+id/card2"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:cardCornerRadius="5dp"
         app:cardElevation="15dp"
-        app:cardCornerRadius="5dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/confirmed_patient"
+        app:layout_constraintTop_toBottomOf="@+id/todayText">
 
+        <TextView
+            android:id="@+id/tv_under_inspection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:text="검사중"
+            android:textColor="#F2B705"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_under_inspection_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:text="56,455"
+            android:textColor="#F2B705"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/inspection_today_increased"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginBottom="10dp"
+            android:text="2,426↑"
+            android:textColor="#F2B705"
+            android:textStyle="bold" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/quarantine_release"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_margin="30dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/confirmed_patient">
+
+        <TextView
+            android:id="@+id/tv_quarantine_release"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:text="격리 해제"
+            android:textColor="#260273"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_quarantine_release_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:text="31,004"
+            android:textColor="#260273"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/quarantine_release_today_increased"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginBottom="10dp"
+            android:text="73↑"
+            android:textColor="#260273"
+            android:textStyle="bold" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/dead"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_margin="30dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/quarantine_release"
+        app:layout_constraintTop_toBottomOf="@+id/under_inspection">
+
+        <TextView
+            android:id="@+id/tv_dead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:text="사망자"
+            android:textColor="#000000"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_dead_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:text="509"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/dead_today_increased"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginBottom="10dp"
+            android:text="4↑"
+            android:textColor="#000000"
+            android:textStyle="bold" />
     </androidx.cardview.widget.CardView>
 
 
