@@ -52,18 +52,26 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         // as 는 형변환
-        mapFragment.getMapAsync(this)
-        // 비동기 -> 기다리지 않고 처리하는 것(타이밍을 맞추지 않고 처리)
-        // 전화기, 무전기
-        locationInit()
+
+        Log.d("TAGTAGTAG",intent.hasExtra("lat").toString())
+        if (intent.hasExtra("lat")){
+            Log.d("TAGTAG","ㅎㅎ")
+
+            val dbLat = intent.getStringExtra("lat")!!.toDouble()
+            val dbLon = intent.getStringExtra("lon")!!.toDouble()
+            val LatLng = LatLng(dbLat,dbLon)
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng, 17f))
+            mMap.addMarker(MarkerOptions().position(LatLng).title("ㅎㅎ"))
+        }else{
+            mapFragment.getMapAsync(this)
+            locationInit()
+        }
 
         if (ContextCompat.checkSelfPermission(
                 this,
                 Manifest.permission.ACCESS_FINE_LOCATION // 위치에 대한 권한 요청
             )
             != PackageManager.PERMISSION_GRANTED
-// 사용자 권한 체크로
-// 외부 저장소 읽기가 허용되지 않았다면
         ) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(
                     this,
@@ -92,8 +100,6 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
                     Toast.makeText(this, "권한을 허용했습니다.", Toast.LENGTH_SHORT).show()
                 }
                 builder.show()
-
-
             } else {
                 ActivityCompat.requestPermissions(
                     this,
