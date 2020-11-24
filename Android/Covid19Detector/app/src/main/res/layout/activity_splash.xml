@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#260273"
     android:orientation="vertical"
-    tools:context=".Splash">
+    tools:context=".view.Splash">
 
     <ImageView
         android:id="@+id/logo"
@@ -28,5 +28,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/Coala" />
+        app:srcCompat="@drawable/coala" />
 </androidx.constraintlayout.widget.ConstraintLayout>
