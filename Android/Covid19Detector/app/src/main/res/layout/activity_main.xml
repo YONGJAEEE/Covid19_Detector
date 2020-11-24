@@ -112,7 +112,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:backgroundTint="@color/white"
-                android:src="@drawable/ic_icon"
+                android:src="@drawable/vector"
                 android:layout_marginEnd="3dp"
                 app:layout_constraintEnd_toEndOf="@id/fab_layout"
                 app:layout_constraintTop_toTopOf="@+id/fab_layout"/>

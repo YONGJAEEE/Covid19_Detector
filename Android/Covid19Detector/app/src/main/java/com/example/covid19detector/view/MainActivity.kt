@@ -32,6 +32,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.PolylineOptions
 import kotlinx.android.synthetic.main.activity_main.*
@@ -53,7 +54,6 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         onClickEvent()
 
         val mapFragment = supportFragmentManager
@@ -71,6 +71,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
                     DataUtil.LatLngData.value!!.lon.toString()
                 )
                 getPostedResponse(postBody)
+                mMap.clear()
                 mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latlng, 17f))
                 mMap.addMarker(MarkerOptions().position(latlng).title("ㅎㅎ"))
             }, 1000)
@@ -92,7 +93,9 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
             // TODO: 2020-11-25 액티비티 이동
         }
         fab3.setOnClickListener {
+            mMap.clear()
             mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 17f))
+            mMap.addMarker(MarkerOptions().position(currentLatLng).title("내 위치"))
         }
     }
 
@@ -152,7 +155,6 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
 
     fun removeLocationLister() {
         fusedLocationProviderClient!!.removeLocationUpdates(locationCallback)
-
     }
 
     @SuppressLint("MissingPermission")
@@ -251,7 +253,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
                     mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 17f))
                     polyLineOptions.add(currentLatLng)
                     mMap.addPolyline(polyLineOptions)
-                    mMap.addMarker(MarkerOptions().position(currentLatLng).title("ㅎㅎ"))
+                    mMap.addMarker(MarkerOptions().position(currentLatLng).title("현재 위치"))
                 }
 
                 if (nowLatLng != tempLatLng) {
