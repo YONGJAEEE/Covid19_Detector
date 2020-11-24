@@ -8,4 +8,11 @@ class Splash : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
     }
+    
+    private fun startLoading() {
+        val handler = Handler()
+        handler.postDelayed(Runnable { finish() }, 2000)
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+    }
 }
