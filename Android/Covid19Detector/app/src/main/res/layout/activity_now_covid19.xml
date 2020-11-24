@@ -13,6 +13,8 @@
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
         android:layout_marginTop="32dp"
+        android:fontFamily="@font/notosanskrmedium"
+        android:includeFontPadding="false"
         android:text="코로나 국내 현황"
         android:textColor="@color/black"
         android:textSize="24sp"
@@ -26,6 +28,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
+        android:fontFamily="@font/notosanskrmedium"
+        android:includeFontPadding="false"
         android:text="2020.11.24 화요일"
         android:textColor="@color/black"
         android:textSize="22sp"
@@ -46,6 +50,8 @@
         <TextView
             android:id="@+id/tv_patient"
             android:layout_width="wrap_content"
+            android:fontFamily="@font/notosanskrmedium"
+            android:includeFontPadding="false"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
@@ -56,6 +62,8 @@
         <TextView
             android:id="@+id/tv_patient_num"
             android:layout_width="wrap_content"
+            android:fontFamily="@font/notosanskrbold"
+            android:includeFontPadding="false"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|center_vertical"
             android:text="31,004"
@@ -65,6 +73,8 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
+            android:fontFamily="@font/notosanskrmedium"
+            android:includeFontPadding="false"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|bottom"
             android:layout_marginBottom="10dp"
@@ -89,6 +99,8 @@
         android:id="@+id/under_inspection"
         android:layout_width="160dp"
         android:layout_height="160dp"
+        android:fontFamily="@font/notosanskrmedium"
+        android:includeFontPadding="false"
         android:layout_margin="30dp"
         app:cardCornerRadius="5dp"
         app:cardElevation="15dp"
@@ -98,6 +110,8 @@
         <TextView
             android:id="@+id/tv_care"
             android:layout_width="wrap_content"
+            android:fontFamily="@font/notosanskrmedium"
+            android:includeFontPadding="false"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
@@ -110,6 +124,8 @@
             android:id="@+id/tv_care_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/notosanskrbold"
+            android:includeFontPadding="false"
             android:layout_gravity="center_horizontal|center_vertical"
             android:text="56,455"
             android:textColor="#F2B705"
@@ -120,6 +136,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:fontFamily="@font/notosanskrmedium"
+            android:includeFontPadding="false"
             android:layout_gravity="center_horizontal|bottom"
             android:layout_marginBottom="10dp">
 
@@ -142,6 +160,8 @@
         android:id="@+id/quarantine_release"
         android:layout_width="160dp"
         android:layout_height="160dp"
+        android:fontFamily="@font/notosanskrmedium"
+        android:includeFontPadding="false"
         android:layout_margin="30dp"
         app:cardCornerRadius="5dp"
         app:cardElevation="15dp"
@@ -152,6 +172,8 @@
             android:id="@+id/tv_relase"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/notosanskrmedium"
+            android:includeFontPadding="false"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
             android:text="격리 해제"
@@ -162,6 +184,8 @@
             android:id="@+id/tv_relase_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/notosanskrbold"
+            android:includeFontPadding="false"
             android:layout_gravity="center_horizontal|center_vertical"
             android:text="31,004"
             android:textColor="#260273"
@@ -172,6 +196,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:fontFamily="@font/notosanskrmedium"
+            android:includeFontPadding="false"
             android:layout_gravity="center_horizontal|bottom"
             android:layout_marginBottom="10dp">
         <TextView
@@ -195,6 +221,8 @@
         android:layout_height="160dp"
         android:layout_margin="30dp"
         app:cardCornerRadius="5dp"
+        android:fontFamily="@font/notosanskrmedium"
+        android:includeFontPadding="false"
         app:cardElevation="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/quarantine_release"
@@ -206,6 +234,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
+            android:fontFamily="@font/notosanskrmedium"
+            android:includeFontPadding="false"
             android:text="사망자"
             android:textColor="#000000"
             android:textStyle="bold" />
@@ -216,6 +246,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|center_vertical"
             android:text="509"
+            android:fontFamily="@font/notosanskrbold"
+            android:includeFontPadding="false"
             android:textColor="#000000"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -232,6 +264,10 @@
             android:layout_height="wrap_content"
 
             android:text="4"
+            android:fontFamily="@font/notosanskrmedium"
+            android:includeFontPadding="false"
+            android:layout_marginBottom="10dp"
+            android:text="4↑"
             android:textColor="#000000"
             android:textStyle="bold" />
             <TextView
