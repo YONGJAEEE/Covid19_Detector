@@ -63,6 +63,5 @@ exports.getXY = (async (location) => {
 
   await browser.close();
 
-  sql = `UPDATE dataSheet SET x = '${loca[0]}', y = '${loca[1]}' WHERE location = '${location}';`;
-  await connection.query(sql,() =>{connection.release();});
+  return loca;
 });
