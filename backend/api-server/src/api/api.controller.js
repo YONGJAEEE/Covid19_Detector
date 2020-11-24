@@ -52,6 +52,7 @@ exports.location = (async (ctx,next) => {
       "locate" : rows[count]['location'],
       "x" : rows[count]['x'],
       "y" : rows[count]['y'],
+      "distance" : Math.min.apply(null, list)
     };
   };
 
