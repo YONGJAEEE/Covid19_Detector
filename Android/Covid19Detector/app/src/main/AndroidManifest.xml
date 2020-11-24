@@ -23,7 +23,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".view.MapActivity"></activity>
+        <activity android:name=".view.MapActivity"/>
         <activity android:name=".view.SearchActivity" />
         <activity android:name=".view.NowCovid19Activity" />
 
