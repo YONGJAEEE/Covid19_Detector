@@ -78,6 +78,17 @@
         </FrameLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/frame"
+            android:layout_alignStart="@+id/frame">
+
+    
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/fab_layout"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
@@ -90,6 +101,7 @@
                 android:id="@+id/fab1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:backgroundTint="@color/white"
                 android:src="@drawable/ic_icon"
                 android:layout_marginEnd="3dp"
                 app:layout_constraintEnd_toEndOf="@id/fab_layout"
@@ -99,8 +111,9 @@
                 android:id="@+id/fab2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:backgroundTint="@color/white"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/ic_icon"
+                android:src="@drawable/ic_map"
                 android:layout_marginEnd="3dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/fab1" />
@@ -109,13 +122,15 @@
                 android:id="@+id/fab3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:backgroundTint="@color/white"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/ic_icon"
+                android:src="@drawable/ic_union"
                 android:layout_marginEnd="3dp"
                 android:layout_marginBottom="3dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/fab2" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </RelativeLayout>
 

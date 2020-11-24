@@ -52,12 +52,9 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        tv_adress.setOnClickListener() {
-            btnClick()
-        }
-        btn_search.setOnClickListener() {
-            btnClick()
-        }
+
+        onClickEvent()
+
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
 
@@ -72,6 +69,25 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
                 mMap.addMarker(MarkerOptions().position(latlng).title("ㅎㅎ"))
             }, 1000)
         })
+    }
+
+    fun onClickEvent(){
+        tv_adress.setOnClickListener() {
+            btnClick()
+        }
+        btn_search.setOnClickListener() {
+            btnClick()
+        }
+        fab1.setOnClickListener {
+            val intent = Intent(this,NowCovid19Activity::class.java)
+            startActivity(intent)
+        }
+        fab2.setOnClickListener {
+            // TODO: 2020-11-25 액티비티 이동
+        }
+        fab3.setOnClickListener {
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 17f))
+        }
     }
 
     fun btnClick() {
