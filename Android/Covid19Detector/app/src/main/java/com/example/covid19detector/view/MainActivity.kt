@@ -66,6 +66,11 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         DataUtil.LatLngData.observe(this, Observer {
             Handler().postDelayed({
                 val latlng = LatLng(DataUtil.LatLngData.value!!.lat,DataUtil.LatLngData.value!!.lon)
+                val postBody = PostBody(
+                    DataUtil.LatLngData.value!!.lat.toString(),
+                    DataUtil.LatLngData.value!!.lon.toString()
+                )
+                getPostedResponse(postBody)
                 mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latlng, 17f))
                 mMap.addMarker(MarkerOptions().position(latlng).title("ㅎㅎ"))
             }, 1000)
@@ -206,6 +211,31 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
             addLocationListener()
         }
     }
+    fun getPostedResponse(postBody : PostBody) : Int{
+        var score = 0
+        val call : Call<PostResponse> = ApiRetrofitClient.instance.GetData.postLatLon(postBody)
+
+        call.enqueue(object : retrofit2.Callback<PostResponse>{
+            override fun onResponse(
+                call: Call<PostResponse>,
+                response: Response<PostResponse>
+            ) {
+                score = response.body()!!.distance
+                Log.d("TAGTAG",score.toString())
+                when(score){
+                    0 -> img_icon.setImageResource(R.drawable.safety)
+                    1 -> img_icon.setImageResource(R.drawable.warning)
+                    2 -> img_icon.setImageResource(R.drawable.danger)
+                    else -> img_icon.setImageResource(R.drawable.safety)
+                }
+            }
+
+            override fun onFailure(call: Call<PostResponse>, t: Throwable) {
+                Log.w("Fail","Retrofit Failed.")
+            }
+        })
+        return score
+    }
 
     inner class MyLocationCallBack : LocationCallback() {
         override fun onLocationResult(p0: LocationResult?) {
@@ -236,24 +266,6 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
                 }
                 Log.d("MapsActivity", "위도: $latitude, 경도 : $longitude")
             }
-        }
-        fun getPostedResponse(postBody : PostBody) : Int{
-            var score = 0
-            val call : Call<PostResponse> = ApiRetrofitClient.instance.GetData.postLatLon(postBody)
-
-            call.enqueue(object : retrofit2.Callback<PostResponse>{
-                override fun onResponse(
-                    call: Call<PostResponse>,
-                    response: Response<PostResponse>
-                ) {
-                    score = response.body()!!.distance
-                }
-
-                override fun onFailure(call: Call<PostResponse>, t: Throwable) {
-                    Log.w("Fail","Retrofit Failed.")
-                }
-            })
-            return score
         }
     }
 }
