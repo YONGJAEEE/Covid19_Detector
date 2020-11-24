@@ -6,6 +6,7 @@ dotenv.config();
 
 import db from './db';
 import crawl from './lib/crawl';
+import dataInput from './lib/dataInput';
 
 const connection = mariadb.createPool({
   host: process.env.host,
@@ -15,40 +16,54 @@ const connection = mariadb.createPool({
 });
 
 
-schedule.scheduleJob ('10 * * * * *', async () =>{
-  let data, date, sql, rows, outdate = '';
-  let outdata = [
-    '해당 일자 내 모든 접촉자 파악이 완료되어 동선 비공개',
-    '해당 동선 내 모든 접촉자 파악이 완료되어 동선 비공개'
-  ];
-  
-  
-  sql = `SELECT location FROM dataSheet;`;
-  rows = await connection.query(sql,() =>{connection.release();});
+schedule.scheduleJob ('00 * * * * *', async () =>{
+  let data, date, sql, rows;
 
-  await rows.map(async (element,index) => { 
-    console.log(index);
-    crawl.getXY(element['location']);
-  });
-  
-
-
-/*
+  const insertD = (async () => {  
   sql = `SELECT * FROM setting;`;
   rows = await connection.query(sql,() =>{connection.release();});
 
-  await rows.map(async (element, index) => {
-    console.log(index,'번째',element['name']);
-    [data,date] = await crawl.crawlGetDatas(element['link'], element['trNum'], element['trData'], element['trDate']);
-    console.log(data,date);
+    await rows.map(async (element, index) => {
+      console.log(index,'번째',element['name']);
+      [data,date] = await crawl.crawlGetDatas(element['link'], element['trNum'], element['trData'], element['trDate']);
+      console.log(data,date);
 
-    await data.map(async (dataElement, index) => {
-      sql = `INSERT INTO dataSheet(city,location,date,x,y) VALUES('${element['name']}','${dataElement}','${date[index]}','null','null');`
+      await data.map(async (dataElement, index) => {
+        sql = `INSERT INTO dataSheet(city,location,date,x,y) VALUES('${element['name']}','${dataElement}','${date[index]}','null','null');`
+        await connection.query(sql,() =>{connection.release();});
+      });
+    });
+  });
+
+  await insertD();
+});
+
+schedule.scheduleJob ('15 * * * * *', async () =>{
+  let data, date, sql, rows;
+
+  const deleteD = (async () => {  
+    sql = `DELETE FROM dataSheet WHERE location LIKE '%해당%';`;
+    await connection.query(sql,() =>{connection.release();});
+    console.log('삭제 완료');
+  });
+
+  await deleteD();
+});
+
+schedule.scheduleJob ('20 * * * * *', async () =>{
+  let data, date, sql, rows;
+  console.log('좌표찾기 시작');
+  const updateD = (async () => {  
+    sql = `SELECT location FROM dataSheet;`;
+    rows = await connection.query(sql,() =>{connection.release();});
+
+    await rows.map(async (element,index) => { 
+      data = await crawl.getXY(element['location']);
+  
+      sql = `UPDATE dataSheet SET x = '${data[0]}', y = '${data[1]}' WHERE location = '${element['location']}';`;
       await connection.query(sql,() =>{connection.release();});
     });
   });
 
-  sql = `DELETE FROM dataSheet WHERE location LIKE '%해당%';`;
-  rows = await connection.query(sql,() =>{connection.release();});
- */
+  await updateD();
 });
