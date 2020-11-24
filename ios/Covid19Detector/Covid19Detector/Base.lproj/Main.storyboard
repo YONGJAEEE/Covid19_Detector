@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tLo-di-YcJ">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Map-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Covid19Detector" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kfE-jh-4HF" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CBK-XV-ZUL">
+                                <rect key="frame" x="353" y="666" width="47" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="Vector"/>
+                                <connections>
+                                    <action selector="vectorBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="scB-Wh-o8B"/>
+                                    <segue destination="zXK-aJ-Ll7" kind="show" id="F4p-qe-4bq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3lV-RM-JJB">
+                                <rect key="frame" x="353" y="731" width="47" height="49"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="map"/>
+                                <connections>
+                                    <action selector="covidBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="F07-3N-ukt"/>
+                                    <segue destination="Tbk-2N-WoU" kind="show" id="A75-2o-W58"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="       장소를 입력하여 주세요." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kMR-fs-5er">
+                                <rect key="frame" x="50" y="98" width="314" height="34"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9im-7q-gfH">
+                                <rect key="frame" x="50" y="98" width="314" height="34"/>
+                                <connections>
+                                    <action selector="locationTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="v2D-Xj-Z2F"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Mb2-WH-xNO">
+                                <rect key="frame" x="39" y="104" width="38" height="25"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="9im-7q-gfH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="0NT-GT-saO"/>
+                            <constraint firstItem="kMR-fs-5er" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="BCG-Vb-m3j"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Mb2-WH-xNO" secondAttribute="bottom" constant="732" id="Btx-ym-Ck8"/>
+                            <constraint firstItem="3lV-RM-JJB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="353" id="Czr-Ew-ZhS"/>
+                            <constraint firstItem="kfE-jh-4HF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="GOg-3b-yFQ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kMR-fs-5er" secondAttribute="trailing" constant="40" id="Gxe-A2-Bru"/>
+                            <constraint firstAttribute="bottom" secondItem="kfE-jh-4HF" secondAttribute="bottom" id="H8o-JT-Wb4"/>
+                            <constraint firstItem="3lV-RM-JJB" firstAttribute="top" secondItem="9im-7q-gfH" secondAttribute="bottom" constant="599" id="J1F-bN-83Q"/>
+                            <constraint firstItem="3lV-RM-JJB" firstAttribute="top" secondItem="kMR-fs-5er" secondAttribute="bottom" constant="599" id="PAS-Nc-Vya"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="kMR-fs-5er" secondAttribute="bottom" constant="730" id="QKI-X1-UWQ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9im-7q-gfH" secondAttribute="trailing" constant="50" id="RVP-bn-WQ7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kMR-fs-5er" secondAttribute="trailing" constant="50" id="UPv-rr-lYG"/>
+                            <constraint firstItem="Mb2-WH-xNO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="39" id="VYD-er-fhL"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="3lV-RM-JJB" secondAttribute="bottom" constant="82" id="XvZ-6D-xbe"/>
+                            <constraint firstItem="kMR-fs-5er" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="c9e-f0-67W"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="kMR-fs-5er" secondAttribute="bottom" constant="730" id="dzv-fG-E5H"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Mb2-WH-xNO" secondAttribute="trailing" constant="337" id="ffd-Ya-Qli"/>
+                            <constraint firstItem="Mb2-WH-xNO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="hdN-G0-a7Z"/>
+                            <constraint firstItem="kfE-jh-4HF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="kOz-CM-dau"/>
+                            <constraint firstItem="kfE-jh-4HF" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="qjc-pr-o1A"/>
+                            <constraint firstItem="9im-7q-gfH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="sZB-Fd-JEr"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3lV-RM-JJB" secondAttribute="trailing" constant="14" id="uCn-Gu-OGN"/>
+                            <constraint firstItem="kMR-fs-5er" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="wyK-hq-1RU"/>
+                            <constraint firstItem="kMR-fs-5er" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="yqS-uy-Uxw"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Map" id="5BM-zF-jSO"/>
+                    <connections>
+                        <outlet property="covidBtn" destination="3lV-RM-JJB" id="RSO-hc-cdQ"/>
+                        <outlet property="mapView" destination="kfE-jh-4HF" id="tvM-mw-po6"/>
+                        <outlet property="txtSearch" destination="kMR-fs-5er" id="Nl6-jZ-EP0"/>
+                        <outlet property="vectorBtn" destination="CBK-XV-ZUL" id="vhY-vj-wgv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="884.05797101449286" y="130.58035714285714"/>
+        </scene>
+        <!--내가 이동한 경로-->
+        <scene sceneID="82s-FQ-jog">
+            <objects>
+                <viewController id="Tbk-2N-WoU" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QQV-3K-wXb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="uhX-B7-DIc"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="내가 이동한 경로" id="cUg-Cb-Lh0"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="geR-yc-TaW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2296" y="638"/>
+        </scene>
+        <!--코로나 국내 현황-->
+        <scene sceneID="trV-iC-mX0">
+            <objects>
+                <viewController storyboardIdentifier="Covid19ViewController" id="zXK-aJ-Ll7" customClass="Covid19ViewController" customModule="Covid19Detector" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Rkf-bm-Wt9">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Czt-CA-2TA">
+                                <rect key="frame" x="0.0" y="185" width="414" height="677"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Ipz-X4-elz">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gK6-QR-78y">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Exb-ce-wdL">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Jx8-7R-5ZD">
+                                        <rect key="frame" x="143" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="SAw-Wc-OZ8">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="u3H-Fa-Xpv">
+                                        <rect key="frame" x="286" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="gCc-Jk-rP9">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="uRI-2K-d51">
+                                        <rect key="frame" x="0.0" y="138" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="1lT-gY-oC8">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="코로나 국내 현황" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cvj-C2-5ML">
+                                <rect key="frame" x="20" y="125" width="175" height="31.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wdb-Gg-ANB">
+                                <rect key="frame" x="20" y="156.5" width="198" height="28.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="4v0-mW-hn4"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Cvj-C2-5ML" firstAttribute="top" secondItem="4v0-mW-hn4" secondAttribute="top" constant="37" id="3NV-so-6N5"/>
+                            <constraint firstItem="Czt-CA-2TA" firstAttribute="leading" secondItem="4v0-mW-hn4" secondAttribute="leading" id="3cv-iQ-eJJ"/>
+                            <constraint firstItem="4v0-mW-hn4" firstAttribute="trailing" secondItem="Wdb-Gg-ANB" secondAttribute="trailing" constant="196" id="7DL-GV-XkY"/>
+                            <constraint firstItem="4v0-mW-hn4" firstAttribute="bottom" secondItem="Cvj-C2-5ML" secondAttribute="bottom" constant="705.5" id="BKY-dh-aFH"/>
+                            <constraint firstItem="4v0-mW-hn4" firstAttribute="bottom" secondItem="Czt-CA-2TA" secondAttribute="bottom" id="Caa-ii-2kj"/>
+                            <constraint firstItem="4v0-mW-hn4" firstAttribute="trailing" secondItem="Czt-CA-2TA" secondAttribute="trailing" id="FfN-bJ-DER"/>
+                            <constraint firstItem="4v0-mW-hn4" firstAttribute="bottom" secondItem="Wdb-Gg-ANB" secondAttribute="bottom" constant="677" id="Z5Z-IX-Fqo"/>
+                            <constraint firstItem="Wdb-Gg-ANB" firstAttribute="leading" secondItem="4v0-mW-hn4" secondAttribute="leading" constant="20" id="ddG-ML-MOV"/>
+                            <constraint firstItem="Cvj-C2-5ML" firstAttribute="leading" secondItem="4v0-mW-hn4" secondAttribute="leading" constant="20" id="h1E-fv-FRZ"/>
+                            <constraint firstItem="Wdb-Gg-ANB" firstAttribute="top" secondItem="Cvj-C2-5ML" secondAttribute="bottom" id="i7c-QP-WPL"/>
+                            <constraint firstItem="Czt-CA-2TA" firstAttribute="top" secondItem="Wdb-Gg-ANB" secondAttribute="bottom" id="k2c-Kc-u5R"/>
+                            <constraint firstItem="4v0-mW-hn4" firstAttribute="trailing" secondItem="Cvj-C2-5ML" secondAttribute="trailing" constant="219" id="mlK-tb-sqg"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="코로나 국내 현황" id="ejJ-G7-RRf"/>
+                    <connections>
+                        <outlet property="collectionView" destination="Czt-CA-2TA" id="vdQ-Jf-gyI"/>
+                        <outlet property="dateText" destination="Wdb-Gg-ANB" id="K0r-cA-STx"/>
+                        <outlet property="titleLabel" destination="Cvj-C2-5ML" id="5V5-RN-xvV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vMj-LZ-OOD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2295.6521739130435" y="-24.107142857142858"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="PGE-kv-jv6">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tLo-di-YcJ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lqA-WV-8eO">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="j0B-w9-m0l"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VNd-Yh-E4D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="884" y="-666"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Vector" width="13" height="13"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="map" width="14" height="14"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
