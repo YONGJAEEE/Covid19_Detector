@@ -18,6 +18,16 @@ module.exports = (Sequelize, sequelize) => {
       allowNull: false
     },
 
+    x: {//x축
+      type: Sequelize.TEXT,
+      allowNull: false
+    },
+
+    y: {//y축
+      type: Sequelize.TEXT,
+      allowNull: false
+    },
+
     date: {//날짜
       type: Sequelize.TEXT,
       allowNull: false
