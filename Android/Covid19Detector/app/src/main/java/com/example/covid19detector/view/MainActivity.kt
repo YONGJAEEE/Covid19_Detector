@@ -2,6 +2,7 @@ package com.example.covid19detector.view
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
@@ -9,6 +10,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.view.ContextThemeWrapper
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.covid19detector.R
@@ -65,12 +67,27 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
                 )
             ) { // 허용되지 않았다면 다시 확인.
 
-                // 권한 허용
-                ActivityCompat.requestPermissions(
-                    this,
-                    arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
-                    REQUEST_ACCESS_FINE_LOCATION
+                val builder = AlertDialog.Builder(
+                    ContextThemeWrapper(
+                        this,
+                        R.style.Theme_AppCompat_Light_Dialog
+                    )
                 )
+                builder.setTitle("권한 허용")
+                builder.setMessage("사진 정보를 얻으려면 외부 저장소 권한이 필수로 필요합니다.")
+
+                builder.setNegativeButton("허용하지 않음.") { _, _ ->
+                    Toast.makeText(this, "허용하지 않았습니다. 앱을 다시 시작해주세요.", Toast.LENGTH_SHORT).show()
+                }
+                builder.setPositiveButton("허용") { _, _ ->
+                    ActivityCompat.requestPermissions(
+                        this,
+                        arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                        REQUEST_ACCESS_FINE_LOCATION
+                    )
+                    Toast.makeText(this, "권한을 허용했습니다.", Toast.LENGTH_SHORT).show()
+                }
+                builder.show()
 
 
             } else {
@@ -120,7 +137,6 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap = googleMap
 
         val sydney = LatLng(-34.0, 151.0) // 위도 경도, 변수에 저장.
-        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
         // 지도의 표시를 하고 제목을 추가.
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
         // 마커 위치로 지도 이동.
@@ -141,13 +157,8 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     @SuppressLint("MissingPermission")
-    // 위험 권한 사용시 요청 코드가 호출되어야 하는데,
-    // 없어서 발생됨. 요청 코드는 따로 처리 했음.
     fun addLocationListener() {
         fusedLocationProviderClient!!.requestLocationUpdates(locationRequest, locationCallback, null)
-        //위치 권한을 요청해야 함.
-        // 액티비티가 잠깐 쉴 때,
-        // 자신의 위치를 확인하고, 갱신된 정보를 요청
     }
     inner class MyLocationCallBack : LocationCallback() {
         override fun onLocationResult(p0: LocationResult?) {
@@ -164,6 +175,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
                 polyLineOptions.add(latLng) // polyline 기준을 latLng으로 설정
 
                 mMap.addPolyline(polyLineOptions) // googleMap에 ployLine을 그림.
+                mMap.addMarker(MarkerOptions().position(latLng).title("ㅎㅎ"))
             }
         }
     }

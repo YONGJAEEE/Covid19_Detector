@@ -1,7 +1,10 @@
 package com.example.covid19detector.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import com.example.covid19detector.R
 
 class Splash : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -9,11 +12,11 @@ class Splash : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
         startLoading()
     }
-    
+
     private fun startLoading() {
-        val handler = Handler()
-        handler.postDelayed(Runnable { finish() }, 2000)
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
+        Handler().postDelayed({
+            val intent = Intent(this,MainActivity::class.java)
+            startActivity(intent)
+        }, 2000)
     }
 }
