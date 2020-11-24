@@ -77,20 +77,15 @@ exports.crawlGetEvery = (async () => {
   for (let i = 2; i <= 4; i++) {
     data.push( await page.$eval(`body > div.wrap.nj > div.mainlive_container > div.container > div > div.liveboard_layout > div.liveNumOuter > div.liveNum > ul > li:nth-child(${i}) > span.num`, element => { return element.textContent; }) )
     date.push( await page.$eval(`body > div.wrap.nj > div.mainlive_container > div.container > div > div.liveboard_layout > div.liveNumOuter > div.liveNum > ul > li:nth-child(${i}) > span.before`, element => { return element.textContent; }) )
-
+    data[i] = data[i].split('+ ')[0].split(')')[0];
+    date[i] = date[i].split('+ ')[1].split(')')[0];
 
   }
   await browser.close();
 
   data[0] = data[0].split(')')[1];
   date[0] = date[0].split('+ ')[1].split(')')[0];
-  data[1] = data[1].split('+ ')[0].split(')')[0];
-  date[1] = date[1].split('+ ')[1].split(')')[0];
-  data[2] = data[2].split('+ ')[0].split(')')[0];
-  date[2] = date[2].split('+ ')[1].split(')')[0];
-  data[3] = data[3].split('+ ')[0].split(')')[0];
-  date[3] = date[3].split('+ ')[1].split(')')[0];
-  
+
   console.log(data, date);
 
   sql = `INSERT INTO sickPeople(gotCha,runAway,cure,dead) VALUES('${data[0]}:${date[0]}','${data[1]}:${date[1]}','${data[2]}:${date[2]}','${data[3]}:${date[3]}');`;
