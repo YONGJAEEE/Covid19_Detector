@@ -34,7 +34,7 @@ exports.status = (async (ctx,next) => {
 exports.location = (async (ctx,next) => {
   const { locateX } = ctx.request.body;
   const { locateY } = ctx.request.body;
-  let sql,rows,status,body,count,list = [];
+  let sql,rows,status,body,count,set,distance,list = [];
 
 
   const location = async() => {
@@ -46,13 +46,22 @@ exports.location = (async (ctx,next) => {
     });
 
     count = list.indexOf(Math.min.apply(null, list));
+    set = Math.floor(Math.min.apply(null, list) * 10000000);
+
+    if (set>1000) {
+      distance = 0;
+    }else if(set>500){
+      distance = 1;
+    }else{
+      distance = 2;
+    }
 
     status = 200;
     body = {
       "locate" : rows[count]['location'],
       "x" : rows[count]['x'],
       "y" : rows[count]['y'],
-      "distance" : Math.min.apply(null, list)
+      "distance" : distance
     };
   };
 
