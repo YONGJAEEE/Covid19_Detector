@@ -8,9 +8,7 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.ContextThemeWrapper
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.covid19detector.R
@@ -28,24 +26,32 @@ import com.google.android.gms.maps.model.PolylineOptions
 
 class MainActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var mMap: GoogleMap
-    val markerOptions: MarkerOptions = MarkerOptions()
-    var fusedLocationProviderClient: FusedLocationProviderClient? = null
+    // 지도 조작을 위한 객체.
+    val markerOptions : MarkerOptions = MarkerOptions()
+    var fusedLocationProviderClient : FusedLocationProviderClient? = null
+    // 위치값 얻어오기 객체
     var locationRequest: LocationRequest? = null // 위치 요청
 
     var locationCallback: MyLocationCallBack? = null // 내부 클래스, 위치 변경 후 지도에 표시.
 
     val polyLineOptions = PolylineOptions().width(5f).color(Color.RED)
+    //경로를 표시할 펜 구성.
+    // 다각으로 꺽어지는 선, 굵기는 5f, 색상은 빨강.
 
     val REQUEST_ACCESS_FINE_LOCATION = 1000
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        // 세로모드 고정.
 
+        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
+        // as 는 형변환
         mapFragment.getMapAsync(this)
-
+        // 비동기 -> 기다리지 않고 처리하는 것(타이밍을 맞추지 않고 처리)
+        // 전화기, 무전기
         locationInit()
 
         if (ContextCompat.checkSelfPermission(
@@ -53,7 +59,8 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
                 Manifest.permission.ACCESS_FINE_LOCATION // 위치에 대한 권한 요청
             )
             != PackageManager.PERMISSION_GRANTED
-
+// 사용자 권한 체크로
+// 외부 저장소 읽기가 허용되지 않았다면
         ) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(
                     this,
@@ -61,27 +68,13 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
                 )
             ) { // 허용되지 않았다면 다시 확인.
 
-                val builder = AlertDialog.Builder(
-                    ContextThemeWrapper(
-                        this,
-                        R.style.Theme_AppCompat_Light_Dialog
-                    )
-                )
-                builder.setTitle("권한 허용")
-                builder.setMessage("사진 정보를 얻으려면 외부 저장소 권한이 필수로 필요합니다.")
+                        // 권한 허용
+                        ActivityCompat.requestPermissions(
+                            this,
+                            arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                            REQUEST_ACCESS_FINE_LOCATION
+                        )
 
-                builder.setNegativeButton("허용하지 않음.") { _, _ ->
-                    Toast.makeText(this, "허용하지 않았습니다. 앱을 다시 시작해주세요.", Toast.LENGTH_SHORT).show()
-                }
-                builder.setPositiveButton("허용") { _, _ ->
-                    ActivityCompat.requestPermissions(
-                        this,
-                        arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
-                        REQUEST_ACCESS_FINE_LOCATION
-                    )
-                    Toast.makeText(this, "권한을 허용했습니다.", Toast.LENGTH_SHORT).show()
-                }
-                builder.show()
 
             } else {
                 ActivityCompat.requestPermissions(
@@ -95,18 +88,17 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        //super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         when (requestCode) {
             REQUEST_ACCESS_FINE_LOCATION -> {
                 if (grantResults.isNotEmpty() && grantResults[0] ==
                     PackageManager.PERMISSION_GRANTED
                 ) {
+// 권한이 승인 됐다면
                     addLocationListener()
                 } else {
+// 권한이 거부 됐다면
                     Toast.makeText(this, "권한이 거부됨", Toast.LENGTH_SHORT).show()
                 }
                 return
@@ -147,7 +139,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         super.onPause()
     }
 
-    fun removeLocationLister() {
+    fun removeLocationLister(){
         fusedLocationProviderClient!!.removeLocationUpdates(locationCallback)
         // 어플이 종료되면 지도 요청 해제.
     }
@@ -156,11 +148,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
     // 위험 권한 사용시 요청 코드가 호출되어야 하는데,
     // 없어서 발생됨. 요청 코드는 따로 처리 했음.
     fun addLocationListener() {
-        fusedLocationProviderClient!!.requestLocationUpdates(
-            locationRequest,
-            locationCallback,
-            null
-        )
+        fusedLocationProviderClient!!.requestLocationUpdates(locationRequest, locationCallback, null)
         //위치 권한을 요청해야 함.
         // 액티비티가 잠깐 쉴 때,
         // 자신의 위치를 확인하고, 갱신된 정보를 요청
