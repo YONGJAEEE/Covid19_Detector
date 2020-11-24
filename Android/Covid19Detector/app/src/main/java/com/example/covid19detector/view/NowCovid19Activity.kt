@@ -57,7 +57,6 @@ class NowCovid19Activity : AppCompatActivity() {
                     "값을 읽어오지 못했습니다. 잠시후 다시 시도해주세요.",
                     Toast.LENGTH_SHORT).show()
             }
-
         })
     }
 }
