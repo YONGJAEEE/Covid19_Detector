@@ -2,10 +2,10 @@ package com.example.covid19detector.network
 
 import com.example.covid19detector.model.CovidResponse
 import com.example.covid19detector.model.JusoResponse
+import com.example.covid19detector.model.PostBody
+import com.example.covid19detector.model.PostResponse
 import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface GetDataAPI {
     @GET("address.json")
@@ -18,4 +18,9 @@ interface GetDataAPI {
 
     @GET("status")
     fun getTotalCovid() : Call<CovidResponse>
+
+    @POST("location")
+    fun postLatLon(
+        @Body postBody : PostBody
+    ):Call<PostResponse>
 }

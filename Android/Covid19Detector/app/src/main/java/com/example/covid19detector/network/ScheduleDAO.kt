@@ -12,5 +12,5 @@ interface ScheduleDAO {
     fun insertSchedule(vararg schedule: Schedule)
 
     @Query("SELECT * FROM schedule WHERE date = :selectedDate ")
-    fun getData(selectedDate: Date): List<Schedule>
+    fun getData(selectedDate: String): List<Schedule>
 }
