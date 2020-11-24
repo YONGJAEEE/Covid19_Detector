@@ -12,16 +12,5 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
-
-        tv_adress.setOnClickListener(){
-            btnClick()
-        }
-        btn_search.setOnClickListener(){
-            btnClick()
-        }
-    }
-    fun btnClick(){
-        val intent = Intent(this,SearchActivity::class.java)
-        startActivity(intent)
     }
 }
