@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".view.NowCovid19Activity">
 
     <TextView
         android:id="@+id/tv1"
@@ -63,15 +63,25 @@
             android:textSize="24sp"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/patient_today_increased"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|bottom"
             android:layout_marginBottom="10dp"
-            android:text="271↑"
+            android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_patient_today"
+            android:text="271"
             android:textColor="#BF304A"
             android:textStyle="bold" />
+            <TextView
+                android:textColor="#BF304A"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="↑"/>
+        </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 
@@ -85,19 +95,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/confirmed_patient"
         app:layout_constraintTop_toBottomOf="@+id/todayText">
-
         <TextView
-            android:id="@+id/tv_under_inspection"
+            android:id="@+id/tv_care"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
-            android:text="검사중"
+            android:text="치료중"
             android:textColor="#F2B705"
             android:textStyle="bold" />
 
+
         <TextView
-            android:id="@+id/tv_under_inspection_num"
+            android:id="@+id/tv_care_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|center_vertical"
@@ -106,15 +116,26 @@
             android:textSize="24sp"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/inspection_today_increased"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:layout_gravity="center_horizontal|bottom"
-            android:layout_marginBottom="10dp"
-            android:text="2,426↑"
-            android:textColor="#F2B705"
-            android:textStyle="bold" />
+            android:layout_marginBottom="10dp">
+
+            <TextView
+                android:id="@+id/tv_care_today"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2,426"
+                android:textColor="#F2B705"
+                android:textStyle="bold" />
+            <TextView
+                android:textColor="#F2B705"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="↑"/>
+        </LinearLayout>
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -128,7 +149,7 @@
         app:layout_constraintTop_toBottomOf="@+id/confirmed_patient">
 
         <TextView
-            android:id="@+id/tv_quarantine_release"
+            android:id="@+id/tv_relase"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -138,7 +159,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/tv_quarantine_release_num"
+            android:id="@+id/tv_relase_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|center_vertical"
@@ -147,15 +168,25 @@
             android:textSize="24sp"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/quarantine_release_today_increased"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:layout_gravity="center_horizontal|bottom"
-            android:layout_marginBottom="10dp"
-            android:text="73↑"
+            android:layout_marginBottom="10dp">
+        <TextView
+            android:id="@+id/tv_relase_today"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="73"
             android:textColor="#260273"
             android:textStyle="bold" />
+            <TextView
+                android:textColor="#260273"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="↑"/>
+        </LinearLayout>
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -189,15 +220,26 @@
             android:textSize="24sp"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/dead_today_increased"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:layout_gravity="center_horizontal|bottom"
-            android:layout_marginBottom="10dp"
-            android:text="4↑"
+            android:layout_marginBottom="10dp">
+        <TextView
+            android:id="@+id/tv_dead_today"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="4"
             android:textColor="#000000"
             android:textStyle="bold" />
+            <TextView
+                android:textColor="#000000"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="↑"/>
+        </LinearLayout>
     </androidx.cardview.widget.CardView>
 
 

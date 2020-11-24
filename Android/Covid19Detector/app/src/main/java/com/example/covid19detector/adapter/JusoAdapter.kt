@@ -1,5 +1,6 @@
 package com.example.covid19detector.adapter
 
+import android.app.Activity
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.covid19detector.R
 import com.example.covid19detector.model.Documents
+import com.example.covid19detector.view.MainActivity
 
 class JusoAdapter(val AdressList : ArrayList<Documents>) : RecyclerView.Adapter<JusoAdapter.Holder>(){
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView){
@@ -16,7 +18,8 @@ class JusoAdapter(val AdressList : ArrayList<Documents>) : RecyclerView.Adapter<
         fun bind(juso : Documents) {
             jusoText.text = juso.address_name
             itemView.setOnClickListener{
-
+                (itemView.context as Activity).finish()
+                val intent = Intent(itemView.context,MainActivity::class.java)
             }
         }
     }

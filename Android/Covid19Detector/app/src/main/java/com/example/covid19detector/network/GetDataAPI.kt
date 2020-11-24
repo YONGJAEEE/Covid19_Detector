@@ -1,5 +1,6 @@
 package com.example.covid19detector.network
 
+import com.example.covid19detector.model.CovidResponse
 import com.example.covid19detector.model.JusoResponse
 import retrofit2.Call
 import retrofit2.http.GET
@@ -14,4 +15,7 @@ interface GetDataAPI {
         @Query("size") size: Int,
         @Query("query") query: String
     ): Call<JusoResponse>
+
+    @GET("status")
+    fun getTotalCovid() : Call<CovidResponse>
 }
