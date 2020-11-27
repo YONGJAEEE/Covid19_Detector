@@ -17,7 +17,7 @@
 		BDF496F4256C9C2B00368377 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDF496F3256C9C2B00368377 /* CoreLocation.framework */; };
 		BDF49721256D200E00368377 /* Covid19ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF49720256D200E00368377 /* Covid19ViewController.swift */; };
 		BDF49728256D215C00368377 /* Covid19CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF49727256D215C00368377 /* Covid19CollectionViewCell.swift */; };
-		BDF4975F256D2DD300368377 /* Covid19Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDF49724256D213F00368377 /* Covid19Cell.xib */; };
+		BDF4976B256D8FDC00368377 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF4976A256D8FDC00368377 /* Data.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,8 +35,8 @@
 		BDF496F7256CC58C00368377 /* JEJU.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = JEJU.gpx; sourceTree = "<group>"; };
 		BDF496F9256CCADC00368377 /* GSM.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GSM.gpx; sourceTree = "<group>"; };
 		BDF49720256D200E00368377 /* Covid19ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Covid19ViewController.swift; sourceTree = "<group>"; };
-		BDF49724256D213F00368377 /* Covid19Cell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Covid19Cell.xib; sourceTree = "<group>"; };
 		BDF49727256D215C00368377 /* Covid19CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Covid19CollectionViewCell.swift; sourceTree = "<group>"; };
+		BDF4976A256D8FDC00368377 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		DA2CDFD39D9457AC419B5513 /* Pods-Covid19Detector.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Covid19Detector.debug.xcconfig"; path = "Target Support Files/Pods-Covid19Detector/Pods-Covid19Detector.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -99,8 +99,8 @@
 				BDF496DC256BF2DC00368377 /* ViewController.swift */,
 				BDF49720256D200E00368377 /* Covid19ViewController.swift */,
 				BDF49727256D215C00368377 /* Covid19CollectionViewCell.swift */,
-				BDF49724256D213F00368377 /* Covid19Cell.xib */,
 				BDF496DE256BF2DC00368377 /* Main.storyboard */,
+				BDF4976A256D8FDC00368377 /* Data.swift */,
 				BDF496E1256BF2DD00368377 /* Assets.xcassets */,
 				BDF496E3256BF2DD00368377 /* LaunchScreen.storyboard */,
 				BDF496E6256BF2DD00368377 /* Info.plist */,
@@ -171,7 +171,6 @@
 				BDF496E5256BF2DD00368377 /* LaunchScreen.storyboard in Resources */,
 				BDF496E0256BF2DC00368377 /* Main.storyboard in Resources */,
 				BDF496E2256BF2DD00368377 /* Assets.xcassets in Resources */,
-				BDF4975F256D2DD300368377 /* Covid19Cell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +240,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDF4976B256D8FDC00368377 /* Data.swift in Sources */,
 				BDF49721256D200E00368377 /* Covid19ViewController.swift in Sources */,
 				BDF496DD256BF2DC00368377 /* ViewController.swift in Sources */,
 				BDF49728256D215C00368377 /* Covid19CollectionViewCell.swift in Sources */,
