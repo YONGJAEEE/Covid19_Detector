@@ -278,6 +278,14 @@
                     <navigationItem key="navigationItem" title="코로나 국내 현황" id="ejJ-G7-RRf"/>
                     <connections>
                         <outlet property="dateText" destination="Wdb-Gg-ANB" id="K0r-cA-STx"/>
+                        <outlet property="plusChecking" destination="6cN-c7-hq6" id="0A8-69-wS2"/>
+                        <outlet property="plusDead" destination="JpL-wc-Tim" id="qcj-ML-Fvy"/>
+                        <outlet property="plusPatient" destination="Z7G-NJ-4BQ" id="dtu-pi-tQA"/>
+                        <outlet property="plusRelease" destination="IYe-Lh-XZX" id="aV2-Qy-xGF"/>
+                        <outlet property="sumChecking" destination="A8e-fH-Z6M" id="qQQ-Yp-Kqg"/>
+                        <outlet property="sumDead" destination="ZkC-tX-Osh" id="pYM-iO-6xh"/>
+                        <outlet property="sumPatient" destination="ljs-5w-cRi" id="htj-Ef-XVE"/>
+                        <outlet property="sumRelease" destination="OGU-Wq-Rof" id="cqp-r1-MTY"/>
                         <outlet property="titleLabel" destination="Cvj-C2-5ML" id="5V5-RN-xvV"/>
                         <outlet property="view1" destination="KKS-lL-8Sm" id="5AT-Bp-gjv"/>
                         <outlet property="view2" destination="roX-xM-CBK" id="cfg-4f-0Sv"/>
