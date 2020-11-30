@@ -40,7 +40,8 @@ class Covid19ViewController: UIViewController {
         view3.layer.cornerRadius = 10
         view4.layer.cornerRadius = 10
        
-        
+        apiCall()
+        dataInput()
     }
     
     func apiCall() {
