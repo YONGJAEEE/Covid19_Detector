@@ -76,7 +76,7 @@ exports.location = (async (ctx,next) => {
 exports.test = (async (ctx,next) => {
 
   const test = async() => {
-    await crawlAll.crawlGet();
+    crawlAll.crawlGet();
   };
 
   await test();

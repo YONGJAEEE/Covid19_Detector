@@ -26,10 +26,10 @@ exports.crawlGet = (async () => {
   console.log(data, date);
 
   for (let i = 2; i <= 4; i++) {
-    data.push( await page.$eval(`body > div.wrap.nj > div.mainlive_container > div.container > div > div.liveboard_layout > div.liveNumOuter > div.liveNum > ul > li:nth-child(${i}) > span.num`, element => { return element.textContent; }) )
-    date.push( await page.$eval(`body > div.wrap.nj > div.mainlive_container > div.container > div > div.liveboard_layout > div.liveNumOuter > div.liveNum > ul > li:nth-child(${i}) > span.before`, element => { return element.textContent; }) )
-    data[i] = data[i].split('+ ')[0].split(')')[0];
-    date[i] = date[i].split('+ ')[1].split(')')[0];
+    data.push( await page.$eval(`body > div.wrap.nj > div.mainlive_container > div.container > div > div.liveboard_layout > div.liveNumOuter > div.liveNum > ul > li:nth-child(${i}) > span.num`, element => { return element.textContent; }).split('+ ')[0].split(')')[0] )
+    date.push( await page.$eval(`body > div.wrap.nj > div.mainlive_container > div.container > div > div.liveboard_layout > div.liveNumOuter > div.liveNum > ul > li:nth-child(${i}) > span.before`, element => { return element.textContent; }).split('+ ')[1].split(')')[0] )
+    //data[i] = data[i].split('+ ')[0].split(')')[0];
+    //date[i] = date[i].split('+ ')[1].split(')')[0];
   }
   await browser.close();
 
