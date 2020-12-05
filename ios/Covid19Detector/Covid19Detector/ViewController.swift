@@ -14,17 +14,10 @@ var searchHistory: [String] = []
 
 class ViewController: UIViewController {
     
-    //LocationManager 선언
     var locationManager: CLLocationManager!
     
-    
-    //위도와 경도
     let GSMlatitude = 35.142985302362
     let GSMlongitude = 126.80071381358424
-    
-    let JEJUlatitude = 33.391917920866156
-    let JEJUlongitude = 126.25355410006284
-    
     
     @IBOutlet weak var vectorBtn: UIButton!
     @IBOutlet weak var txtSearch: UITextField!
@@ -46,23 +39,15 @@ class ViewController: UIViewController {
         
         
         let marker = GMSMarker()
+        
         marker.position = CLLocationCoordinate2D(latitude: GSMlatitude, longitude: GSMlongitude)
         marker.title = "광주소프트웨어마이스터고등학교"
         marker.snippet = "광주광역시"
         marker.map = mapView
         
         mapView.settings.compassButton = true
-        
-        // GOOGLE MAPS SDK: USER'S LOCATION
         mapView.isMyLocationEnabled = true
         mapView.settings.myLocationButton = true
-        
-//        let camera = GMSCameraPosition.camera(withLatitude: GSMlatitude, longitude: GSMlongitude, zoom: 6.0)
-//        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-//
-//        view = mapView
-        
-        
     }
     
     @IBAction func locationTapped(_ sender: Any) {
@@ -82,25 +67,6 @@ extension ViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
         print("locations = \(locValue.latitude) \(locValue.longitude)")
-        //        //locationManager 인스턴스 생성 및 델리게이트 생성
-        //        locationManager = CLLocationManager()
-        //        locationManager.delegate = self
-        //
-        //        //포그라운드 상태에서 위치 추적 권한 요청
-        //        locationManager.requestWhenInUseAuthorization()
-        //
-        //        //배터리에 맞게 권장되는 최적의 정확도
-        //        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        //
-        //        //위치업데이트
-        //        locationManager.startUpdatingLocation()
-        //
-        //        //위도 경도 가져오기
-        //        let coor = locationManager.location?.coordinate
-        //        latitude = coor?.latitude
-        //        longitude = coor?.longitude
-        
-        //lblLocation.text = "latitude = \(locValue.latitude), longitude = \(locValue.longitude)"
     }
 }
 
@@ -108,18 +74,16 @@ extension ViewController: GMSAutocompleteViewControllerDelegate {
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         print("Place name: \(String(describing: place.name))")
         dismiss(animated: true, completion: nil)
-//        var count: Int = 0
+        
         
         self.mapView.clear()
         self.txtSearch.placeholder = "         장소를 입력하여 주세요."
         
-        
         let cord2D = CLLocationCoordinate2D(latitude: (place.coordinate.latitude), longitude: (place.coordinate.longitude))
-        
         let marker = GMSMarker()
+        
         marker.position =  cord2D
         marker.title = place.name
-//        marker.snippet = place.name
         marker.map = mapView
         
         self.mapView.camera = GMSCameraPosition.camera(withTarget: cord2D, zoom: 15)
@@ -138,41 +102,3 @@ extension ViewController: GMSAutocompleteViewControllerDelegate {
     
     
 }
-//extension ViewController: CLLocationManagerDelegate {
-//    // 2
-//    func locationManager(
-//        _ manager: CLLocationManager,
-//        didChangeAuthorization status: CLAuthorizationStatus
-//    ) {
-//        // 3
-//        guard status == .authorizedWhenInUse else { return }
-//        // 4
-//
-//    }
-//
-//    // 6
-//    func locationManager(
-//        _ manager: CLLocationManager,
-//        didUpdateLocations locations: [CLLocation]) {
-//        guard let location = locations.first else {
-//            return
-//        }
-//
-//        // 7
-//        mapView.camera = GMSCameraPosition(
-//            target: location.coordinate,
-//            zoom: 15,
-//            bearing: 0,
-//            viewingAngle: 0)
-//    }
-//
-//    // 8
-//    func locationManager(
-//        _ manager: CLLocationManager,
-//        didFailWithError error: Error
-//    ) {
-//        print(error)
-//    }
-//}
-
-

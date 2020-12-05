@@ -13,7 +13,6 @@ class HistoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         historyTableView.delegate = self
         historyTableView.dataSource = self
         historyTableView.tableFooterView = UIView()
