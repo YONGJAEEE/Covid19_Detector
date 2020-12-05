@@ -9,6 +9,7 @@
     "init:db": "babel-node src/db/init.js"
   },
   "dependencies": {
+    "@babel/core": "^7.12.9",
     "@babel/preset-env": "^7.12.7",
     "@koa/cors": "^3.1.0",
     "@koa/router": "^10.0.0",
