@@ -9,6 +9,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 import api  from './api';
+import db  from './db';
 import crawlAll from './lib/crawlAll';
 
 
