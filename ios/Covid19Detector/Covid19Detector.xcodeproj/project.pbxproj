@@ -16,8 +16,9 @@
 		BDF496E5256BF2DD00368377 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDF496E3256BF2DD00368377 /* LaunchScreen.storyboard */; };
 		BDF496F4256C9C2B00368377 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDF496F3256C9C2B00368377 /* CoreLocation.framework */; };
 		BDF49721256D200E00368377 /* Covid19ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF49720256D200E00368377 /* Covid19ViewController.swift */; };
-		BDF49728256D215C00368377 /* Covid19CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF49727256D215C00368377 /* Covid19CollectionViewCell.swift */; };
 		BDF4976B256D8FDC00368377 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF4976A256D8FDC00368377 /* Data.swift */; };
+		BDF497AE2577F09400368377 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF497AD2577F09400368377 /* HistoryViewController.swift */; };
+		BDF497B2257B714B00368377 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF497B1257B714B00368377 /* HistoryTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,8 +36,9 @@
 		BDF496F7256CC58C00368377 /* JEJU.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = JEJU.gpx; sourceTree = "<group>"; };
 		BDF496F9256CCADC00368377 /* GSM.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GSM.gpx; sourceTree = "<group>"; };
 		BDF49720256D200E00368377 /* Covid19ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Covid19ViewController.swift; sourceTree = "<group>"; };
-		BDF49727256D215C00368377 /* Covid19CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Covid19CollectionViewCell.swift; sourceTree = "<group>"; };
 		BDF4976A256D8FDC00368377 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		BDF497AD2577F09400368377 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		BDF497B1257B714B00368377 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		DA2CDFD39D9457AC419B5513 /* Pods-Covid19Detector.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Covid19Detector.debug.xcconfig"; path = "Target Support Files/Pods-Covid19Detector/Pods-Covid19Detector.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,9 +100,10 @@
 				BDF496DA256BF2DC00368377 /* SceneDelegate.swift */,
 				BDF496DC256BF2DC00368377 /* ViewController.swift */,
 				BDF49720256D200E00368377 /* Covid19ViewController.swift */,
-				BDF49727256D215C00368377 /* Covid19CollectionViewCell.swift */,
+				BDF497AD2577F09400368377 /* HistoryViewController.swift */,
 				BDF496DE256BF2DC00368377 /* Main.storyboard */,
 				BDF4976A256D8FDC00368377 /* Data.swift */,
+				BDF497B1257B714B00368377 /* HistoryTableViewCell.swift */,
 				BDF496E1256BF2DD00368377 /* Assets.xcassets */,
 				BDF496E3256BF2DD00368377 /* LaunchScreen.storyboard */,
 				BDF496E6256BF2DD00368377 /* Info.plist */,
@@ -242,9 +245,10 @@
 			files = (
 				BDF4976B256D8FDC00368377 /* Data.swift in Sources */,
 				BDF49721256D200E00368377 /* Covid19ViewController.swift in Sources */,
+				BDF497B2257B714B00368377 /* HistoryTableViewCell.swift in Sources */,
 				BDF496DD256BF2DC00368377 /* ViewController.swift in Sources */,
-				BDF49728256D215C00368377 /* Covid19CollectionViewCell.swift in Sources */,
 				BDF496D9256BF2DC00368377 /* AppDelegate.swift in Sources */,
+				BDF497AE2577F09400368377 /* HistoryViewController.swift in Sources */,
 				BDF496DB256BF2DC00368377 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

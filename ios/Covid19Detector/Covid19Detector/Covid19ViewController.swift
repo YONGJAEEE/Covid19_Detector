@@ -41,7 +41,7 @@ class Covid19ViewController: UIViewController {
         view4.layer.cornerRadius = 10
        
         apiCall()
-        dataInput()
+        
     }
     
     func apiCall() {
@@ -50,11 +50,16 @@ class Covid19ViewController: UIViewController {
         AF.request(encodingURL).responseData(completionHandler: { data in
             guard let data = data.data else { return }
             self.model = try? JSONDecoder().decode(CovidData.self, from: data)
+            print(data)
+            print(self.model)
+            self.dataInput()
         })
+        
     }
     
     func dataInput() {
         sumPatient.text = model?.patient
+        print(sumPatient.text)
         plusPatient.text = model?.add_patient
         
         sumChecking.text = model?.care
