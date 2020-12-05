@@ -10,6 +10,8 @@ import GooglePlaces
 import GoogleMaps
 import CoreLocation
 
+var searchHistory: [String] = []
+
 class ViewController: UIViewController {
     
     //LocationManager 선언
@@ -104,6 +106,7 @@ extension ViewController: GMSAutocompleteViewControllerDelegate {
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         print("Place name: \(String(describing: place.name))")
         dismiss(animated: true, completion: nil)
+//        var count: Int = 0
         
         self.mapView.clear()
         self.txtSearch.placeholder = "         장소를 입력하여 주세요."
@@ -118,6 +121,8 @@ extension ViewController: GMSAutocompleteViewControllerDelegate {
         marker.map = mapView
         
         self.mapView.camera = GMSCameraPosition.camera(withTarget: cord2D, zoom: 15)
+        
+        searchHistory.append(place.name!)
     }
     
     
