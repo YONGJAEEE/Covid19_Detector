@@ -44,15 +44,11 @@ class ViewController: UIViewController {
         vectorBtn.layer.cornerRadius = covidBtn.layer.frame.size.width/2;
         
         
-//        let camera = GMSCameraPosition.camera(withLatitude: JEJUlatitude, longitude: JEJUlongitude, zoom: 6.0)
-//        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-//
-//        view = mapView
         
         let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: JEJUlatitude, longitude: JEJUlongitude)
-        marker.title = "제주홍익호텔"
-        marker.snippet = "제주도"
+        marker.position = CLLocationCoordinate2D(latitude: GSMlatitude, longitude: GSMlongitude)
+        marker.title = "광주소프트웨어마이스터고등학교"
+        marker.snippet = "광주광역시"
         marker.map = mapView
         
         mapView.settings.compassButton = true
@@ -60,6 +56,12 @@ class ViewController: UIViewController {
         // GOOGLE MAPS SDK: USER'S LOCATION
         mapView.isMyLocationEnabled = true
         mapView.settings.myLocationButton = true
+        
+//        let camera = GMSCameraPosition.camera(withLatitude: GSMlatitude, longitude: GSMlongitude, zoom: 6.0)
+//        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+//
+//        view = mapView
+        
         
     }
     

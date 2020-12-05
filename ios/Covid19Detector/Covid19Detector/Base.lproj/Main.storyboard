@@ -105,7 +105,7 @@
             </objects>
             <point key="canvasLocation" x="884.05797101449286" y="130.58035714285714"/>
         </scene>
-        <!--내가 이동한 장소-->
+        <!--내가 검색한 장소-->
         <scene sceneID="82s-FQ-jog">
             <objects>
                 <viewController id="Tbk-2N-WoU" customClass="HistoryViewController" customModule="Covid19Detector" customModuleProvider="target" sceneMemberID="viewController">
@@ -113,7 +113,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내가 이동한 장소" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B1g-rU-SYs">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내가 검색한 장소" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B1g-rU-SYs">
                                 <rect key="frame" x="20" y="127" width="202" height="32.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="27"/>
                                 <nil key="textColor"/>
@@ -170,7 +170,7 @@
                             <constraint firstItem="Qgb-9A-OLn" firstAttribute="trailing" secondItem="uhX-B7-DIc" secondAttribute="trailing" id="rE4-Xf-990"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="내가 이동한 장소" id="cUg-Cb-Lh0"/>
+                    <navigationItem key="navigationItem" title="내가 검색한 장소" id="cUg-Cb-Lh0"/>
                     <connections>
                         <outlet property="historyTableView" destination="Qgb-9A-OLn" id="MP8-gb-Jom"/>
                     </connections>
