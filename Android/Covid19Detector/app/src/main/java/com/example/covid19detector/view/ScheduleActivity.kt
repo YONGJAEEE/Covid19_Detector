@@ -2,8 +2,11 @@ package com.example.covid19detector.view
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.widget.ArrayAdapter
+import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.covid19detector.R
+import com.example.covid19detector.adapter.desAdapter
 import com.example.covid19detector.network.ScheduleDatabase
 import kotlinx.android.synthetic.main.activity_schedule.*
 import java.text.SimpleDateFormat
@@ -33,15 +36,16 @@ class ScheduleActivity : AppCompatActivity() {
             date_picker_actions.text = sdf.format(cal.time)
 
         }
-
-        date_picker_actions.setOnClickListener {
+        // region
+        /* date_picker_actions.setOnClickListener {
             DatePickerDialog(this@ScheduleActivity, dateSetListener,
                 cal.get(Calendar.YEAR),
                 cal.get(Calendar.MONTH),
                 cal.get(Calendar.DAY_OF_MONTH)).show()
-        }
+        } */
+        // endregion
 
-
+        val destinationAdapter = desAdapter(this, )
         scheduleDB = ScheduleDatabase.getInstance(this)
 
     }
